@@ -15,7 +15,7 @@ public interface UserService {
 
     Mono<User> getUserById(String userId);
 
-    Mono<User> deleteUser(String userId);
+    Mono<Void> deleteUser(String userId);
 
     Flux<Post> getAllUserPosts(String userId);
 

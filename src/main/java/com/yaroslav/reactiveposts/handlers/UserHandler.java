@@ -1,4 +1,4 @@
-package com.yaroslav.reactiveposts;
+package com.yaroslav.reactiveposts.handlers;
 
 import com.yaroslav.reactiveposts.model.Post;
 import com.yaroslav.reactiveposts.model.User;
@@ -59,10 +59,10 @@ public class UserHandler {
 
     public Mono<ServerResponse> deleteUser(ServerRequest request) {
         String userId = getUserId(request);
-
+        Mono<Void> voidMono = this.userService.deleteUser(userId);
         return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(this.userService.deleteUser(userId), User.class);
+                .body(voidMono, Void.class);
     }
 
 
